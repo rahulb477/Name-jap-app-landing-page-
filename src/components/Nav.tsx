@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "../utils/cn";
+import { APK_DOWNLOAD_URL, downloadApk } from "../lib/download";
+import { Download } from "./Icons";
 
 const LINKS = [
   { href: "#counter", label: "Counter" },
@@ -50,12 +52,26 @@ export function Nav() {
           ))}
         </div>
 
-        <a
-          href="#counter"
-          className="rounded-full bg-gradient-to-br from-flame-soft to-flame-deep px-5 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(228,87,10,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(228,87,10,0.45)]"
-        >
-          Start Jap
-        </a>
+        <div className="flex items-center gap-2.5">
+          <a
+            href={APK_DOWNLOAD_URL}
+            onClick={(event) => {
+              event.preventDefault();
+              void downloadApk();
+            }}
+            aria-label="Download App"
+            title="Download App"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-flame-soft to-flame-deep text-white shadow-[0_8px_20px_rgba(228,87,10,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(228,87,10,0.45)]"
+          >
+            <Download className="h-[18px] w-[18px]" />
+          </a>
+          <a
+            href="#counter"
+            className="rounded-full bg-gradient-to-br from-flame-soft to-flame-deep px-5 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(228,87,10,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(228,87,10,0.45)]"
+          >
+            Start Jap
+          </a>
+        </div>
       </nav>
     </header>
   );
