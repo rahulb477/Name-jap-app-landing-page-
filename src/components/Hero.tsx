@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Divider, Reveal } from "./Decor";
+import { APK_DOWNLOAD_URL, downloadApk } from "../lib/download";
+import { Download } from "./Icons";
 
 const DOTS = 44;
 const COUNT = 95;
@@ -86,6 +88,17 @@ export function Hero() {
             </span>
           </h1>
           <Divider className="mt-7" />
+          <a
+            href={APK_DOWNLOAD_URL}
+            onClick={(event) => {
+              event.preventDefault();
+              void downloadApk();
+            }}
+            className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-br from-flame-soft to-flame-deep px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(228,87,10,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(228,87,10,0.45)]"
+          >
+            <Download className="h-5 w-5" />
+            Download App
+          </a>
         </Reveal>
 
         {/* phone-style card */}
